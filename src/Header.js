@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Dropdown, Image, Menu } from "semantic-ui-react";
+import { Container, Dropdown, Menu } from "semantic-ui-react";
 
 const Header = () => (
   <Menu fixed="top" inverted>
