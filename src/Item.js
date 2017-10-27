@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header, Segment, Label } from "semantic-ui-react";
+import { Header, Segment } from "semantic-ui-react";
 
 import { Draggable } from "react-beautiful-dnd";
 
@@ -41,9 +41,6 @@ const Item = props => {
           disabled={item.isPending}
           color={statusToColor[item.status]}
         >
-          {/* <Header as="h3" floated="right">
-            <Label color={statusToColor[item.status]}>{item.status}</Label>
-          </Header> */}
           <Header as="h3" floated="left">
             {item.title}
           </Header>
