@@ -14,6 +14,12 @@ const statusToColor = {
   [C.DONE]: "green"
 };
 
+const statusToDisplayName = {
+  [C.TO_DO]: "TO DO",
+  [C.IN_PROGRESS]: "IN PROGRESS",
+  [C.DONE]: "DONE"
+};
+
 const Lane = props => {
   const { provided, snapshot, items } = props;
 
@@ -24,7 +30,9 @@ const Lane = props => {
         tertiary={snapshot.isDraggingOver}
       >
         <Label attached="top" color={statusToColor[props.laneId]}>
-          {props.laneId}
+          <div style={{ float: "left" }}>
+            {statusToDisplayName[props.laneId]}
+          </div>
         </Label>
         {items.map((item, i) => <Item key={i} item={item} />)}
         {provided.placeholder}
