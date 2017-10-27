@@ -8,14 +8,6 @@ import Item from "./Item";
 
 import * as C from "./Constants";
 
-const grid = 8;
-
-const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
-  padding: grid,
-  width: 250
-});
-
 const statusToColor = {
   [C.TO_DO]: "blue",
   [C.IN_PROGRESS]: "yellow",
