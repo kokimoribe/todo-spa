@@ -6,20 +6,6 @@ import { Draggable } from "react-beautiful-dnd";
 
 import * as C from "./Constants";
 
-const grid = 8;
-
-const getItemStyle = (draggableStyle, isDragging) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: "none",
-  margin: `0 0 ${grid}px 0`,
-
-  // change background colour if dragging
-  // background: isDragging ? "lightgreen" : "grey",
-
-  // styles we need to apply on draggables
-  ...draggableStyle
-});
-
 const statusToColor = {
   [C.TO_DO]: "blue",
   [C.IN_PROGRESS]: "yellow",
@@ -33,7 +19,11 @@ const Item = props => {
     <div>
       <div
         ref={provided.innerRef}
-        style={getItemStyle(provided.draggableStyle, snapshot.isDragging)}
+        style={{
+          userSelect: "none",
+          margin: "0 0 0.8rem 0",
+          ...provided.draggableStyle // styles we need to apply on draggables
+        }}
         {...provided.dragHandleProps}
       >
         <Segment
