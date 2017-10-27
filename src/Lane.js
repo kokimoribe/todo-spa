@@ -18,7 +18,7 @@ const Lane = props => {
   const { provided, snapshot, items } = props;
 
   return (
-    <div ref={provided.innerRef}>
+    <div ref={provided.innerRef} style={{ minHeight: "10rem" }}>
       <Segment
         secondary={!snapshot.isDraggingOver}
         tertiary={snapshot.isDraggingOver}
