@@ -33,6 +33,9 @@ const Lane = props => {
           <div style={{ float: "left" }}>
             {statusToDisplayName[props.laneId]}
           </div>
+          {items.length > 0 && (
+            <div style={{ float: "right" }}>{items.length}</div>
+          )}
         </Label>
         {items.map((item, i) => <Item key={i} item={item} />)}
         {provided.placeholder}
