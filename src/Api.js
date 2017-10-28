@@ -1,36 +1,40 @@
 import Swagger from "swagger-client";
 
-export const updateItem = (itemId, payload) => {
-  // return new Promise((resolve, reject) => {
-  //   console.log("starting updateItem...");
-  //   setTimeout(() => {
-  //     console.log("success!");
-  //     reject("success!");
-  //   }, 1000);
-  // });
-  return new Promise((resolve, reject) => resolve("success!"));
+const host = "https://todo-api-rd7qf9.herokuapp.com/v1";
+const spec = host + "/swagger.json";
+
+const clientPromise = Swagger(spec);
+
+const sendRequest = (tag, operationId, params) => {
+  return clientPromise.then(client => client.apis[tag][operationId](params));
 };
 
-const host = "https://todo-api-rd7qf9.herokuapp.com/v1";
-
-// const request = {
-//   url,
-//   query,
-//   method,
-//   body,
-//   headers,
-//   requestInterceptor,
-//   responseInterceptor,
-//   userFetch
-// }
-
 export const getTasks = () => {
-  const request = {
-    method: "GET",
-    url: host + "/tasks"
-  };
+  const tag = "tasks";
+  const operationId = "todo_api_get_tasks";
+  const params = {};
 
-  return Swagger.http(request)
-    .then(res => res.body)
+  return sendRequest(tag, operationId, params)
+    .then(r => r.body)
+    .catch(e => console.log(e));
+};
+
+export const createTask = ({ title, description }) => {
+  const tag = "tasks";
+  const operationId = "todo_api_create_task";
+  const params = { request_body: { title, description } };
+
+  return sendRequest(tag, operationId, params)
+    .then(r => r.body)
+    .catch(e => console.log(e));
+};
+
+export const updateTask = (id, payload) => {
+  const tag = "tasks";
+  const operationId = "todo_api_update_task";
+  const params = { task_id: id, request_body: payload };
+
+  return sendRequest(tag, operationId, params)
+    .then(r => r.body)
     .catch(e => console.log(e));
 };
