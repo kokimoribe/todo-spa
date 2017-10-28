@@ -47,7 +47,7 @@ const moveItem = (source, destination) => {
       );
       dispatch(addItemToLane(destination.laneId, item.id, destination.index));
 
-      return Api.updateItem(item.id, { status: destination.laneId })
+      return Api.updateTask(item.id, { status: destination.laneId })
         .then(() => dispatch(setItem(item.id, { isPending: false })))
         .catch(e => {
           dispatch(removeItemFromLane(destination.laneId, item.id));
