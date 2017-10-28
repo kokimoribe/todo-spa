@@ -6,6 +6,7 @@ const ADD_ITEM_TO_LANE = "items/ADD_ITEM_TO_LANE";
 const REMOVE_ITEM_FROM_LANE = "items/REMOVE_ITEM_FROM_LANE";
 const REORDER_LANE_ITEMS = "items/REORDER_LANE_ITEMS";
 const SET_ITEM = "items/SET_ITEM";
+const CREATE_ITEM = "items/CREATE_ITEM";
 
 // Actions
 const reorderItems = (laneId, sourceIndex, destinationIndex) => ({
@@ -60,8 +61,20 @@ const moveItem = (source, destination) => {
   };
 };
 
+const createItem = task => {
+  return dispatch => {
+    dispatch({
+      type: CREATE_ITEM,
+      payload: task
+    });
+
+    dispatch(addItemToLane(C.TO_DO, task.id, 0));
+  };
+};
+
 const actions = {
-  moveItem
+  moveItem,
+  createItem
 };
 
 // Initial state
@@ -159,6 +172,14 @@ const reducer = (state = initialState, action) => {
             ...state.itemsById[itemId],
             ...payload
           }
+        }
+      };
+    case CREATE_ITEM:
+      return {
+        ...state,
+        itemsById: {
+          ...state.itemsById,
+          [action.payload.id]: { ...action.payload }
         }
       };
     default:
