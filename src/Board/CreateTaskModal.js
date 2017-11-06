@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Form, Header, Message, Modal } from "semantic-ui-react";
 
-import { actions } from "./itemReducer.js";
-import * as Api from "./Api";
+import { actions as laneActions } from "../Lane/laneReducer";
+import { actions as taskActions } from "../Task/taskReducer";
+import * as Api from "../Api";
+import * as C from "../Constants";
 
 const validateTitle = value => (value.trim() ? null : "Title cannot be empty");
 const validateDescription = value => null;
@@ -65,15 +67,29 @@ class CreateTaskModal extends Component {
 
     const hasErrors = Object.values(errors).filter(err => !!err).length > 0;
 
+    const { boards, tasks } = this.props;
+
     if (hasErrors) {
       this.setState({
         isLoading: false,
         errors
       });
+    } else if (boards.selectedId === "demo") {
+      const task = {
+        id: Math.max(...tasks.ids) + 1,
+        title,
+        description,
+        status: C.TO_DO
+      };
+
+      this.props.addTask(task);
+      this.props.addTaskToLane(task.status, task.id);
+      this.handleClose();
     } else {
-      Api.createTask({ title, description })
-        .then(r => {
-          this.props.createItem(r);
+      Api.createTask(boards.selectedId, title, description)
+        .then(task => {
+          this.props.addTask(task);
+          this.props.addTaskToLane(task.status, task.id);
           this.handleClose();
         })
         .catch(e => {
@@ -84,7 +100,6 @@ class CreateTaskModal extends Component {
             isLoading: false,
             errors: { title: null, description: null, api: message }
           });
-          this.handleClose();
         });
     }
   };
@@ -128,6 +143,14 @@ class CreateTaskModal extends Component {
   }
 }
 
-export default connect(null, { createItem: actions.createItem })(
-  CreateTaskModal
-);
+const mapStateToProps = state => {
+  return {
+    boards: state.boards,
+    tasks: state.tasks
+  };
+};
+
+export default connect(mapStateToProps, {
+  addTask: taskActions.addTask,
+  addTaskToLane: laneActions.addTaskToLane
+})(CreateTaskModal);
