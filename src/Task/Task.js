@@ -4,16 +4,8 @@ import { Header, Segment } from "semantic-ui-react";
 
 import { Draggable } from "react-beautiful-dnd";
 
-import * as C from "./Constants";
-
-const statusToColor = {
-  [C.TO_DO]: "blue",
-  [C.IN_PROGRESS]: "yellow",
-  [C.DONE]: "green"
-};
-
-const Item = props => {
-  const { provided, snapshot, item } = props;
+const Task = props => {
+  const { provided, snapshot, task, color } = props;
 
   return (
     <div>
@@ -28,13 +20,17 @@ const Item = props => {
       >
         <Segment
           raised={snapshot.isDragging}
-          disabled={item.isPending}
-          color={statusToColor[item.status]}
+          disabled={task.isPending}
+          color={color}
+          clearing
         >
           <Header as="h3" floated="left">
-            {item.title}
+            {task.title}
           </Header>
-          <div style={{ clear: "both" }}>{item.description}</div>
+          <Header as="h5" floated="right" style={{ opacity: 0.5 }}>
+            {task.number}
+          </Header>
+          <div style={{ clear: "both" }}>{task.description}</div>
         </Segment>
       </div>
       {provided.placeholder}
@@ -42,16 +38,16 @@ const Item = props => {
   );
 };
 
-const DraggableItem = props => {
-  const { item } = props;
+const DraggableTask = props => {
+  const { task } = props;
 
   return (
-    <Draggable draggableId={item.id}>
+    <Draggable draggableId={task.id}>
       {(provided, snapshot) => (
-        <Item provided={provided} snapshot={snapshot} {...props} />
+        <Task provided={provided} snapshot={snapshot} {...props} />
       )}
     </Draggable>
   );
 };
 
-export default DraggableItem;
+export default DraggableTask;
