@@ -1,9 +1,9 @@
-import Header from "./Header";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import Auth from "./Auth/Auth";
-import Home from "./Home.js";
+import Header from "./Header/Header";
+import Home from "./Home/Home.js";
 import Callback from "./Callback/Callback.js";
 
 const auth = new Auth();
