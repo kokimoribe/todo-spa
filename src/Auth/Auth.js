@@ -13,7 +13,10 @@ import auth0 from "auth0-js";
 const AUTH_CONFIG = {
   domain: "todo-api-rd7qf9.auth0.com",
   clientId: "PHIJcFvC0U5UzCqI0JlZY0XgOgOs37Po",
-  callbackUrl: "http://localhost:3000/callback"
+  callbackUrl:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000/callback"
+      : "https://todo-spa-rd7qf9.herokuapp.com/callback"
 };
 
 export default class Auth {
