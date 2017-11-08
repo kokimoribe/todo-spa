@@ -5,7 +5,7 @@ import { Button, Form, Header, Message, Modal } from "semantic-ui-react";
 import * as Api from "../Api";
 import { actions as boardActions } from "../Board/boardReducer";
 
-const validateName = value => (value.trim() ? null : "Title cannot be empty");
+const validateName = value => (value.trim() ? null : "Name cannot be empty");
 
 const CreateBoardForm = ({ errors, onChange }) => {
   const errorMessages = Object.values(errors).filter(msg => !!msg);
@@ -14,8 +14,8 @@ const CreateBoardForm = ({ errors, onChange }) => {
     <Form error={errorMessages.length > 0}>
       <Form.Input
         required
-        error={!!errors.title}
         autoFocus
+        error={!!errors.name}
         label="Name"
         placeholder="Name"
         onChange={(_, d) => onChange({ field: "name", value: d.value })}
@@ -33,8 +33,7 @@ class CreateBoardModal extends Component {
   state = {
     isOpen: false,
     isLoading: false,
-    title: "",
-    description: "",
+    name: "",
     errors: {}
   };
 
@@ -47,7 +46,7 @@ class CreateBoardModal extends Component {
   handleConfirm = () => {
     this.setState({
       isLoading: true,
-      errors: { title: null, description: null, api: null }
+      errors: { name: null, api: null }
     });
     const { name } = this.state;
 
