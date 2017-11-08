@@ -17,6 +17,7 @@ const CreateTaskForm = ({ errors, onChange }) => {
     <Form error={errorMessages.length > 0}>
       <Form.Input
         required
+        autoFocus
         error={!!errors.title}
         label="Title"
         placeholder="Title"
