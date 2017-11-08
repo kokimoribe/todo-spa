@@ -8,12 +8,11 @@ Can also be viewed via CodeSandbox: https://codesandbox.io/s/github/kokimoribe/t
 
 ## How?
 Built with:
-* React
-* Redux
-* Redux Thunk
-* Semantic UI React
-* Swagger-JS
-* react-beautiful-dnd
+* [React](https://github.com/facebook/react)
+* [Redux](https://github.com/reactjs/redux)
+* [Semantic UI React](https://github.com/Semantic-Org/Semantic-UI-React)
+* [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)
+* [Swagger-JS](https://github.com/swagger-api/swagger-js)
 
 The app is served as a single page application. It serves as a UI client for my [todo-api](https://gitlab.com/koki.moribe/todo-api), which is consumed using [Swagger-JS][https://github.com/swagger-api/swagger-js].
 
