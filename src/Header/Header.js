@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Container, Menu } from "semantic-ui-react";
+import { Button, Container, Icon, Menu } from "semantic-ui-react";
 
 import { actions as boardActions } from "../Board/boardReducer";
 import BoardNav from "./BoardNav";
@@ -21,6 +21,10 @@ const Header = ({ auth, boards, user, selectBoard, selectDemoBoard }) => {
           selectBoard={selectBoard}
           selectDemoBoard={selectDemoBoard}
         />
+        <Menu.Item href="//github.com/kokimoribe/todo-spa" target="_blank">
+          <Icon name="github" />
+          <span> Source </span>
+        </Menu.Item>
         <Menu.Menu position="right">
           {loggedIn && profile ? (
             <UserNav profile={profile} onLogout={auth.logout} />
