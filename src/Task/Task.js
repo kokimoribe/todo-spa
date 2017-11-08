@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header, Segment } from "semantic-ui-react";
+import { Header, Label, Segment } from "semantic-ui-react";
 
 import { Draggable } from "react-beautiful-dnd";
 
@@ -27,9 +27,13 @@ const Task = props => {
           <Header as="h3" floated="left">
             {task.title}
           </Header>
-          <Header as="h5" floated="right" style={{ opacity: 0.5 }}>
+          <Label
+            basic
+            attached="top right"
+            style={{ opacity: 0.3, float: "right", borderStyle: "none" }}
+          >
             {task.number}
-          </Header>
+          </Label>
           <div style={{ clear: "both" }}>{task.description}</div>
         </Segment>
       </div>
