@@ -37,9 +37,13 @@ class CreateBoardModal extends Component {
     errors: {}
   };
 
-  handleOpen = () => this.setState({ isOpen: true });
+  handleOpen = () => {
+    this.setState({ isOpen: true });
+  };
 
-  handleClose = () => this.setState({ isOpen: false, isLoading: false });
+  handleClose = () => {
+    this.setState({ isOpen: false, isLoading: false, name: "", errors: {} });
+  };
 
   handleChange = ({ field, value }) => this.setState({ [field]: value });
 

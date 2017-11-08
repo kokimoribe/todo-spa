@@ -49,7 +49,14 @@ class CreateTaskModal extends Component {
 
   handleOpen = () => this.setState({ isOpen: true });
 
-  handleClose = () => this.setState({ isOpen: false, isLoading: false });
+  handleClose = () =>
+    this.setState({
+      isOpen: false,
+      isLoading: false,
+      title: "",
+      description: "",
+      errors: {}
+    });
 
   handleChange = ({ field, value }) => this.setState({ [field]: value });
 
