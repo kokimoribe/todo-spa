@@ -69,6 +69,10 @@ class CreateTaskModal extends Component {
 
     const { boards, tasks } = this.props;
 
+    const taskArray = tasks.ids.map(id => tasks.byId[id]);
+    const nextId = Math.max(...taskArray.map(task => task.id)) + 1;
+    const nextNum = Math.max(...taskArray.map(task => task.number)) + 1;
+
     if (hasErrors) {
       this.setState({
         isLoading: false,
@@ -76,7 +80,8 @@ class CreateTaskModal extends Component {
       });
     } else if (boards.selectedId === "demo") {
       const task = {
-        id: Math.max(...tasks.ids) + 1,
+        id: nextId,
+        number: nextNum,
         title,
         description,
         status: C.TO_DO
