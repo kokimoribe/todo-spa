@@ -15,6 +15,7 @@ const CreateBoardForm = ({ errors, onChange }) => {
       <Form.Input
         required
         error={!!errors.title}
+        autoFocus
         label="Name"
         placeholder="Name"
         onChange={(_, d) => onChange({ field: "name", value: d.value })}
