@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "auth0-js": "^8.10.1",
-    "flow-bin": "^0.57.3",
     "react": "^16.0.0",
     "react-beautiful-dnd": "^2.4.1",
     "react-dom": "^16.0.0",
