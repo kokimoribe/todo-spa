@@ -2,6 +2,7 @@
 Implementation of a todo app that allows tasks to be dragged and dropped within a Kanban-like board.
 
 Hosted on Heroku: https://todo-spa-rd7qf9.herokuapp.com/
+* My Heroku dynos will most likely be [sleeping](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping), so give it a couple seconds for the initial load!
 
 Can also be viewed via CodeSandbox: https://codesandbox.io/s/github/kokimoribe/todo-spa
 
