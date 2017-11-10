@@ -15,12 +15,12 @@ Built with:
 * [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)
 * [Swagger-JS](https://github.com/swagger-api/swagger-js)
 
-The app is served as a single page application. It serves as a UI client for my [todo-api](https://gitlab.com/koki.moribe/todo-api).
+The app is served as a single page application. It's a client for my [todo-api](https://gitlab.com/koki.moribe/todo-api)!
 
 User management and identity access is handled through [auth0](https://auth0.com)
 
 
-## Running it locally
+## Development
 1. Install [Node.js](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/lang/en/docs/install/)
 
 2. Checkout repo
