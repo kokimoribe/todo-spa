@@ -14,6 +14,7 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.75.1",
+    "serve": "^6.4.1",
     "swagger-client": "^3.3.0"
   },
   "scripts": {
@@ -21,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "now-start": "serve --single ./build"
   },
   "devDependencies": {}
 }
