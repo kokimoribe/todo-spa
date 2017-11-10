@@ -22,18 +22,15 @@ User management and identity access is handled through [auth0](https://auth0.com
 
 ## Development
 1. Install [Node.js](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/lang/en/docs/install/)
-
-2. Checkout repo
-```bash
-git clone git@github.com:kokimoribe/todo-spa.git
-```
-
-3. Run the app
-```bash
-yarn start
-```
-
-4. Open http://localhost:3000
+1. Checkout repo
+    ```bash
+    git clone git@github.com:kokimoribe/todo-spa.git
+    ```
+1. Run the app
+    ```bash
+    yarn start
+    ```
+1. Open http://localhost:3000
 
 ## Build & run
 ```bash
@@ -47,41 +44,41 @@ serve --single ./build
 ### [Heroku](https://www.heroku.com/):
 
 1. Add the [create-react-app-buildpack]
-* https://github.com/mars/create-react-app-buildpack
-* https://blog.heroku.com/deploying-react-with-zero-configuration
-2.  Create `static.json`:
-* https://github.com/mars/create-react-app-buildpack#routing-clean-urls
-```json
-{
-  "root": "build/",
-  "routes": {
-    "/**": "index.html"
-  }
-}
-```
-3. Set up automatic deployment from Github
-* https://devcenter.heroku.com/articles/github-integration
+    * https://github.com/mars/create-react-app-buildpack
+    * https://blog.heroku.com/deploying-react-with-zero-configuration
+1.  Create `static.json`:
+    * https://github.com/mars/create-react-app-buildpack#routing-clean-urls
+    ```json
+    {
+      "root": "build/",
+      "routes": {
+        "/**": "index.html"
+      }
+    }
+    ```
+1. Set up automatic deployment from Github
+  * https://devcenter.heroku.com/articles/github-integration
 
 
-### [Now.sh](https://zeit.co/now)
+### [Now.sh](https://zeit.co/now):
 1. Install `now` CLI (https://github.com/zeit/now-cli)
-```bash
-npm install -g now
-```
-2. Add script for running `serve` in `package.json`:
-```json
-{
-  "name": "todo-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {...},
-  "scripts": {
-    ...,
-    "now-start": "serve --single ./build"
-  }
-}
-```
+    ```bash
+    npm install -g now
+    ```
+1. Add script for running `serve` in `package.json`:
+    ```json
+    {
+      "name": "todo-app",
+      "version": "0.1.0",
+      "private": true,
+      "dependencies": {...},
+      "scripts": {
+        ...,
+        "now-start": "serve --single ./build"
+      }
+    }
+    ```
 3. Deploy
-```bash
-now
-```
+    ```bash
+    now
+    ```
